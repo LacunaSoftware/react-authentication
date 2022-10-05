@@ -4,13 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import config from './config';
+const { Authentication, RestPkiClient, StandardSecurityContexts } = require('restpki-client');
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App token={config._token}/>
-  </React.StrictMode>
-);
+
+const auth = new Authentication(RestPkiClient(config._restPkiEndpoint, config._token));
+auth.startWithWebPki(StandardSecurityContexts.LACUNA_TEST).then((token)=>{
+  root.render(
+    <React.StrictMode>
+      <App token={token}/>
+    </React.StrictMode>
+  );
+});
+    
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -11,7 +11,7 @@ var signatureForm = (function () {
 	var formElements = {};
 
 	// Get an instance of the LacunaWebPKI object
-	var pki = new LacunaWebPKI(config._webPkiLicense);
+	var pki = new LacunaWebPKI();
 
 	// ---------------------------------------------------------------------------------------------
 	// Initializes the signature form.
@@ -98,7 +98,9 @@ var signatureForm = (function () {
 		pki.signWithRestPki({
 			token: formElements.token,
 			thumbprint: selectedCertThumbprint
-		}).success(function () {
+		}).success(function (response) {
+			console.log(response);
+			
 			// Once the operation is completed, we submit the form.
 			formElements.form.submit();
 		});

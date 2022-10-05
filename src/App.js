@@ -1,19 +1,19 @@
 // import logo from './logo.svg';
 import $ from 'jquery';
 import './App.css';
-import signatureForm from './signature-form.js'
-import LacunaWebPKI from 'web-pki';
+import signatureForm from './signature-form.js';
 import config from './config.js';
 
-function App(token) {
-  return (
+function App(props) {
+    console.log(props.token);
+    return (
     <div className="App">
         <div className="content">
         <h2 className="ls-title">Authentication with REST PKI</h2>
 
         <div className="ls-content">
             <form id="signInForm" method="POST">
-                <input type="hidden" id="tokenField" name="token" value={token}/>
+                <input type="hidden" id="tokenField" name="token" value={props.token}/>
                 <div className="form-group">
                     <label htmlFor="certificateSelect">Choose a certificate</label>
                     <select id="certificateSelect" className="custom-select"></select>
@@ -41,13 +41,14 @@ function App(token) {
 $(document).ready(function () {
 		// Once the page is ready, we call the init() function on the javascript code
 		// (see signature-form.js).
-		signatureForm.init({
-			form: $('#signInForm'),                     // The form that should be submitted when the operation is complete.
-			certificateSelect: $('#certificateSelect'), // The <select> element (combo box) to list the certificates.
-			refreshButton: $('#refreshButton'),         // The "refresh" button.
-			signButton: $('#signInButton'),             // The button that initiates the operation.
-			token: config._token                         // The token acquired from REST PKI.
-    });
+        signatureForm.init({
+            form: $('#signInForm'),                     // The form that should be submitted when the operation is complete.
+            certificateSelect: $('#certificateSelect'), // The <select> element (combo box) to list the certificates.
+            refreshButton: $('#refreshButton'),         // The "refresh" button.
+            signButton: $('#signInButton'),             // The button that initiates the operation.
+            token: config._token                         // The token acquired from REST PKI.
+        });
+		
 });
 
 export default App;
