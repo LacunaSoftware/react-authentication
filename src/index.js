@@ -3,20 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import config from './config';
-const { Authentication, RestPkiClient, StandardSecurityContexts } = require('restpki-client');
-
+import axios from 'axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const auth = new Authentication(RestPkiClient(config._restPkiEndpoint, config._token));
-auth.startWithWebPki(StandardSecurityContexts.LACUNA_TEST).then((token)=>{
+var httpClient = axios.create({
+  baseURL: 'http://localhost:8080',
+});
+httpClient.get('/authenticationStart').then((token) => {
   root.render(
     <React.StrictMode>
       <App token={token}/>
     </React.StrictMode>
   );
-});
+})
+
+
     
 
 

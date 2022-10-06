@@ -2,10 +2,8 @@
 import $ from 'jquery';
 import './App.css';
 import signatureForm from './signature-form.js';
-import config from './config.js';
 
 function App(props) {
-    console.log(props.token);
     return (
     <div className="App">
         <div className="content">
@@ -46,7 +44,7 @@ $(document).ready(function () {
             certificateSelect: $('#certificateSelect'), // The <select> element (combo box) to list the certificates.
             refreshButton: $('#refreshButton'),         // The "refresh" button.
             signButton: $('#signInButton'),             // The button that initiates the operation.
-            token: config._token                         // The token acquired from REST PKI.
+            token: $("#tokenField").val()               // The token acquired from REST PKI.
         });
 		
 });

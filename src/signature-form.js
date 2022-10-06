@@ -1,5 +1,4 @@
 import LacunaWebPKI from 'web-pki';
-import config from './config';
 
 // ------------------------------------------------------------------------------------------------
 // This file contains logic for calling the Web PKI component to perform a signature. It is only an
@@ -36,7 +35,7 @@ var signatureForm = (function () {
 		pki.init({
 			ready: loadCertificates,     // As soon as the component is ready we'll load the certificates.
 			defaultFail: onWebPkiError,  // Generic error callback defined below.
-			restPkiUrl: config._restPkiEndpoint // REST PKI endpoint to communication between Web PKI.
+			restPkiUrl: 'http://localhost:8080' // REST PKI endpoint to communication between Web PKI.
 		});
 	}
 
