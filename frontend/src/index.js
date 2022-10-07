@@ -1,27 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import axios from 'axios';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import WebPkiService from "./services/webpki.service";
+import AuthenticationService from "./services/authentication.service";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const webPkiService = new WebPkiService();
+const authenticationService = new AuthenticationService();
 
-var httpClient = axios.create({
-  baseURL: 'http://localhost:3200',
-});
-
-httpClient.post('/auth/start').then((token) => {
-  root.render(
-    <React.StrictMode>
-      <App token={token}/>
-    </React.StrictMode>
-  );
-})
-
-
-    
-
+root.render(
+  <React.StrictMode>
+    <App
+      webPkiService={webPkiService}
+      authenticationService={authenticationService}
+    />
+  </React.StrictMode>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

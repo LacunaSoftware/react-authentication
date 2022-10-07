@@ -1,0 +1,4 @@
+{
+    "BACKEND_ENDPOINT": "http://localhost:3200/",
+    "RESTPKI_ENDPOINT": "https://pki.rest/"
+}

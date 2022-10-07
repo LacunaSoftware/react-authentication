@@ -8,7 +8,7 @@ function getRestPkiClient() {
 }
 
 function getSecurityContextId() {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV === "development") {
     return StandardSecurityContexts.LACUNA_TEST;
   }
   return StandardSecurityContexts.PKI_BRAZIL;
@@ -16,5 +16,5 @@ function getSecurityContextId() {
 
 module.exports = {
   getRestPkiClient,
-  getSecurityContextId
+  getSecurityContextId,
 };
