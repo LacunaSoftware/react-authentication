@@ -91,7 +91,7 @@ var signatureForm = (function () {
 		// $.blockUI({message: 'Signing ...'});
 
 		// Get the thumbprint of the selected certificate
-		var selectedCertThumbprint = formElements.certificateSelect.val();
+		// var selectedCertThumbprint = formElements.certificateSelect.val();
 
 		var httpClient = axios.create({
 			baseURL: 'http://localhost:3200',
@@ -106,15 +106,15 @@ var signatureForm = (function () {
 		
 		// Call signWithRestPki() on the Web PKI component passing the token received from REST PKI
 		// and the certificate selected by the user.
-		pki.signWithRestPki({
-			token: formElements.token,
-			thumbprint: selectedCertThumbprint
-		}).success(function (response) {
-			console.log(response);
+		// pki.signWithRestPki({
+		// 	token: formElements.token,
+		// 	thumbprint: selectedCertThumbprint
+		// }).success(function (response) {
+		// 	console.log(response);
 			
-		// Once the operation is completed, we submit the form.
-		formElements.form.submit();
-		});
+		// // Once the operation is completed, we submit the form.
+		// formElements.form.submit();
+		// });
 	}
 
 	// ---------------------------------------------------------------------------------------------
