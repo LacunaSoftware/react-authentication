@@ -35,7 +35,7 @@ var signatureForm = (function () {
 		pki.init({
 			ready: loadCertificates,     // As soon as the component is ready we'll load the certificates.
 			defaultFail: onWebPkiError,  // Generic error callback defined below.
-			restPkiUrl: 'http://localhost:8080' // REST PKI endpoint to communication between Web PKI.
+			restPkiUrl: 'http://localhost:3200' // REST PKI endpoint to communication between Web PKI.
 		});
 	}
 
@@ -61,7 +61,7 @@ var signatureForm = (function () {
 		pki.listCertificates({
 
 			// The ID of the <select> element to be populated with the certificates.
-			selectId: formElements.certificateSelect.attr('id'),
+			selectId: formElements.certificateSelect.id,
 
 			// The function that will be called to get the text that should be displayed for each
 			// option.

@@ -8,9 +8,9 @@ import axios from 'axios';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 var httpClient = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://localhost:3200',
 });
-httpClient.get('/authenticationStart').then((token) => {
+httpClient.post('/auth/start').then((token) => {
   root.render(
     <React.StrictMode>
       <App token={token}/>
