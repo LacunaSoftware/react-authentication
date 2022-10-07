@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 var httpClient = axios.create({
   baseURL: 'http://localhost:3200',
 });
+
 httpClient.post('/auth/start').then((token) => {
   root.render(
     <React.StrictMode>

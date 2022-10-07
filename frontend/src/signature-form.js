@@ -1,3 +1,4 @@
+import axios from 'axios';
 import LacunaWebPKI from 'web-pki';
 
 // ------------------------------------------------------------------------------------------------
@@ -92,6 +93,17 @@ var signatureForm = (function () {
 		// Get the thumbprint of the selected certificate
 		var selectedCertThumbprint = formElements.certificateSelect.val();
 
+		var httpClient = axios.create({
+			baseURL: 'http://localhost:3200',
+		});
+
+		httpClient.post('/auth/complete', {
+			token: formElements.token
+		}).then((response) => {
+			console.log('response: ', response);
+			formElements.form.submit();
+		});
+		
 		// Call signWithRestPki() on the Web PKI component passing the token received from REST PKI
 		// and the certificate selected by the user.
 		pki.signWithRestPki({
@@ -100,8 +112,8 @@ var signatureForm = (function () {
 		}).success(function (response) {
 			console.log(response);
 			
-			// Once the operation is completed, we submit the form.
-			formElements.form.submit();
+		// Once the operation is completed, we submit the form.
+		formElements.form.submit();
 		});
 	}
 
