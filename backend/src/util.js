@@ -15,5 +15,6 @@ function getSecurityContextId() {
 }
 
 module.exports = {
-  getSecurityContextId,
+  getRestPkiClient,
+  getSecurityContextId
 };

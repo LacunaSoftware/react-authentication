@@ -2,6 +2,8 @@ const { Router } = require("express");
 
 const util = require("../util");
 
+const { Authentication } = require("restpki-client");
+
 const router = new Router();
 
 router.post("/start", async (_req, res) => {
